@@ -1,0 +1,86 @@
+<div class="guessTheArtist">
+
+  <div class="game-board" ng-class="{'game-ended': gameEnded}" ng-show="!error">
+
+    <h1 class="text-center title">Guess The Artist</h1>
+
+    <div class="row">
+
+      <div class="col-xs-12 col-sm-6">
+        <div class="row">
+
+          <h3 class="col-xs-offset-1 col-xs-11 bottom-buffer round-title">Round {{round.num}}:</h3>
+
+          <div class="col-xs-12">
+            <div ng-if="!loading" class="row row-eq-height bottom-buffer" ng-repeat="album in round.albums" ng-show="round.currAttempt.titlesShown > $index">
+              <div class="col-xs-1"><text class="album-index">{{$index + 1}}.</text></div>
+              <div class="col-md-10 col-xs-11"><div class="album-title">{{album.title}}</div></div>
+            </div>
+          </div>
+
+          <span class="col-xs-offset-1" ng-if="loading">Loading albums...</span>
+
+        </div>
+      </div>
+
+      <div class='col-xs-12 col-sm-6'>
+        <div class="row">
+
+          <div class="col-xs-12 .hidden-md-down right-top-space"></div>
+
+          <div class="col-xs-offset-1 col-sm-11 col-xs-10 text-center">
+
+            <h4 class="for-points">For {{round.currAttempt.points}} points</h4>
+            <h4 class="question col-xs-12" for="guessInput">
+              <text>Who's the artist?</text>
+              <text>(enter full name)</text>
+            </h4>
+
+
+            <form class="form-group col-sm-offset-2 col-sm-8" name="guessForm" ng-submit="submit(guessForm)" novalidate>
+              <div class="input-group" >
+                <input class="form-control" type="text" ng-model="guess" ng-disabled="gameEnded" id="guessInput" name="guessInput" required>
+                <span class="input-group-btn">
+                  <input type="submit" id="submit" class="btn submit-btn" ng-disabled="gameEnded || attemptResults.show || !round.currAttempt" value="Guess"/>
+                </span>
+              </div>
+              <div class="text-right validation-text"><text ng-show="guessForm.$submitted && guessForm.guessInput.$error.required">Make a guess!</text></div>
+            </form>
+
+          </div>
+
+          <div class="col-xs-12 hint-section">
+            <div class="row row-eq-height" ng-show="round.currAttempt.showHint">
+              <h4 class="col-xs-3 text-right"><text class="cover-label">Hint:</text></h4>
+              <div class="col-xs-7 text-center">
+                <img class="album-cover" ng-src="{{round.albums[randomCoverIndex].cover}}"/>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="err-message alert alert-danger text-center" ng-if="error">
+    {{error}}
+  </div>
+
+  <div class="col-sm-offset-4 col-sm-4 col-xs-12 text-center alert alert-info attempt-results" ng-show="attemptResults.show">
+   <div class="col-xs-12">
+     <div class="content row">
+       <li class="feedback-mark" ng-class="{'glyphicon glyphicon-ok': attemptResults.succeeded, 'glyphicon glyphicon-remove': !attemptResults.succeeded}"></li>
+       <span class="feedback">{{attemptResults.feedback}}</span>
+       <h4 class="answer" ng-show="attemptResults.answer">The answer is: {{attemptResults.answer}}</h4>
+     </div>
+   </div>
+  </div>
+
+  <div class="col-xs-12 text-center total-score-section" ng-show="gameEnded">
+    <h4>Total Score: {{totalScore}}</h4>
+    <button type="button" class="btn btn-primary" ng-click="resetGame()">Play Again</button>
+  </div>
+
+</div>

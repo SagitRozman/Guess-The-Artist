@@ -1,0 +1,144 @@
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
+
+.container {
+  background-color: rgba(103, 85, 177, 0.05);
+  min-height: 100vh;
+  padding:0;
+}
+
+.guessTheArtist {
+  color: #5e55d2;
+  font-family: Roboto;
+}
+
+.guessTheArtist .title,
+.guessTheArtist .round-title {
+  color: #221994;
+  font-weight: bold;
+}
+
+.guessTheArtist .album-index {
+  border: 1px solid lightgrey;
+  background-color: white;
+  border-radius: 100%;
+  padding: 3px 6px 3px 6px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.guessTheArtist .album-title {
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 5%;
+}
+
+.guessTheArtist .right-top-space {
+  padding: 2%;
+}
+
+.guessTheArtist .hint-section {
+  padding-top:5%;
+  padding-bottom: 4%;
+}
+
+.guessTheArtist .for-points {
+  font-style: italic;
+}
+
+.guessTheArtist .question {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8%;
+}
+
+.guessTheArtist .question>text:nth-child(1) {
+  text-decoration: underline;
+}
+
+.guessTheArtist .validation-text {
+  color: grey;
+  height:20px;
+  padding-top:5px;
+}
+
+.guessTheArtist .attempt-results {
+  position: absolute;
+  padding: 2%;
+  z-index: 3;
+  opacity: 0;
+  top: 35%;
+  transition: opacity 0.5s ease;
+  min-height:130px;
+}
+
+.guessTheArtist .attempt-results:not(.ng-hide) {
+  opacity: 1;
+}
+
+.guessTheArtist .attempt-results>div {
+  height: 80px;
+}
+
+.guessTheArtist .attempt-results .content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.guessTheArtist .glyphicon.glyphicon-ok {
+  color: green;
+}
+
+.guessTheArtist .glyphicon.glyphicon-remove {
+  color: #a94442;
+}
+
+.guessTheArtist .attempt-results .feedback-mark {
+  padding-right:2%;
+  font-size: 18px;
+}
+
+.guessTheArtist .attempt-results .feedback {
+  font-size:20px;
+}
+
+.guessTheArtist .attempt-results .answer {
+  margin-top: 20px;
+}
+
+.guessTheArtist .submit-btn{
+  background-color: #221994;
+  color: white;
+}
+
+.guessTheArtist .cover-label{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.guessTheArtist .album-cover {
+  width:100px;
+  height:100px;
+  border-radius: 100%;
+}
+
+.guessTheArtist .game-board {
+  padding: 1% 4% 2% 4%;
+}
+
+.guessTheArtist .game-board.game-ended {
+  background-color: rgb(238, 238, 238);
+}
+
+.guessTheArtist .total-score-section {
+  padding:3%;
+}
